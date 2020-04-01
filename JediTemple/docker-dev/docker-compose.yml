@@ -1,0 +1,15 @@
+version: '3'
+networks:
+    angular-dev:
+services:
+    angular-dev:
+        image: willersm/angularcli-9.1.0:1.0
+        volumes:
+            # Diretório do projeto
+            - ../jedi-temple:/app
+        ports:
+            - 4200:4200
+        networks: 
+            - angular-dev
+        working_dir: /app
+        command: ng serve --host=0.0.0.0
