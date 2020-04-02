@@ -1,0 +1,42 @@
+<form [formGroup]="specificationsForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Physical Specifications</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Description" formControlName="description">
+            <mat-error *ngIf="specificationsForm.controls['description'].hasError('required')">
+              Description <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="specificationsForm.controls['description'].hasError('minlength')">
+              The minimum number of characters is <strong>3</strong>
+            </mat-error>
+            <mat-error *ngIf="specificationsForm.controls['description'].hasError('maxlength')">
+              The maximum number of characters is <strong>14</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Specification" type="number" formControlName="specification">
+            <mat-error *ngIf="specificationsForm.controls['specification'].hasError('required')">
+              Specification is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="specificationsForm.controls['specification'].hasError('pattern')">
+              Only two decimal places with <strong>123.12</strong>
+            </mat-error>
+            <mat-error *ngIf="specificationsForm.controls['specification'].hasError('max')">
+              The biggest possible date is <strong>999999</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

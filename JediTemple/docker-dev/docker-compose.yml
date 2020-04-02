@@ -13,3 +13,4 @@ services:
             - angular-dev
         working_dir: /app
         command: ng serve --host=0.0.0.0
+        # command: npm i
