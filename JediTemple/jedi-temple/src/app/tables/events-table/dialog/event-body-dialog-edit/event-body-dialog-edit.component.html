@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Editar temple from {{temple?.location}}!</h2>
+
+<form [formGroup]="eventsForm" novalidate (ngSubmit)="close(true)">
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Description" formControlName="description">
+            <mat-option *ngFor="let description of descriptions" [value]="description.name">
+              {{description.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="eventsForm.controls['description'].hasError('required')">
+            Description is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Date" type="number" formControlName="date">
+          <mat-error *ngIf="eventsForm.controls['date'].hasError('required')">
+            Date is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="eventsForm.controls['date'].hasError('max')">
+            The biggest possible date is <strong>999999</strong>
+          </mat-error>
+          <mat-error *ngIf="eventsForm.controls['date'].hasError('pattern')">
+            only whole numbers are supported as <strong>1992</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Time measure" formControlName="time_measure">
+            <mat-option *ngFor="let time_measure of times_measure" [value]="time_measure.abbreviation">
+              {{ time_measure.abbreviation + " " + "(" + time_measure.name + ")"}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="eventsForm.controls['time_measure'].hasError('required')">
+            Time measure is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-dialog-actions>
+    <button class="mat-button" type="button" (click)="close(false)">Cancel</button>
+    <button class="mat-button" type="submit" style="text-align: end;" [disabled]="!eventsForm.valid">Submit</button>
+  </mat-dialog-actions>
+</form>

@@ -9,25 +9,28 @@
     <!-- builders Column -->
     <ng-container matColumnDef="builders">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Builders</th>
-      <td mat-cell *matCellDef="let row" >{{row.builders}}</td>
+      <td mat-cell *matCellDef="let row">{{row.builders}}</td>
     </ng-container>
 
-    <!-- builders Column -->
+    <!-- buttons Column -->
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-      <td mat-cell *matCellDef="let row" style="text-align: end; align-content: center;" > 
-        <button class="mat-flat-button" style="line-height: 0;" (click)="openDialogDelete(row)"><mat-icon color="warn">delete</mat-icon></button>
-        <button class="mat-flat-button" style="line-height: 0;" (click)="openDialogEdit(row)"><mat-icon color="primary">edit</mat-icon></button>
-        <button class="mat-flat-button" style="line-height: 0;" (click)="getRecord('Select')"><mat-icon color="primary">done_outline</mat-icon></button>
+      <td mat-cell *matCellDef="let row" style="text-align: end; align-content: center;">
+        <button class="mat-flat-button" style="line-height: 0;" (click)="openDialogDelete(row)">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+        <button class="mat-flat-button" style="line-height: 0;" (click)="openDialogEdit(row)">
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button class="mat-flat-button" style="line-height: 0;" (click)="getRecord('Select')">
+          <mat-icon color="primary">done_outline</mat-icon>
+        </button>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator #paginator
-      [length]="dataSource?.data.length"
-      [pageIndex]="0"
-      [pageSize]="5"
-      [pageSizeOptions]="[5, 15, 30]">
+  <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="5"
+    [pageSizeOptions]="[5, 15, 30]">
   </mat-paginator>
 </div>

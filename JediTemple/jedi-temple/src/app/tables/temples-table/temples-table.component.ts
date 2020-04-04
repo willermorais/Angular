@@ -30,6 +30,7 @@ export class TemplesTableComponent implements AfterViewInit, OnInit {
   }
 
   constructor(private matDialog: MatDialog){}
+  
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

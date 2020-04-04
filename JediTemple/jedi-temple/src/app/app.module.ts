@@ -26,6 +26,8 @@ import { EventsTableComponent } from './tables/events-table/events-table.compone
 import { PhysicalSpecificationsTableComponent } from './tables/physical-specifications-table/physical-specifications-table.component';
 import { TempleBodyDialogDeleteComponent } from './tables/temples-table/dialog/temple-body-dialog-delete/temple-body-dialog-delete.component';
 import { TempleBodyDialogEditComponent } from './tables/temples-table/dialog/temple-body-dialog-edit/temple-body-dialog-edit.component';
+import { EventBodyDialogDeleteComponent } from './tables/events-table/dialog/event-body-dialog-delete/event-body-dialog-delete.component';
+import { EventBodyDialogEditComponent } from './tables/events-table/dialog/event-body-dialog-edit/event-body-dialog-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { TempleBodyDialogEditComponent } from './tables/temples-table/dialog/tem
     TemplesFormComponent,
     TempleBodyDialogDeleteComponent,
     TempleBodyDialogEditComponent,
+    EventBodyDialogDeleteComponent,
+    EventBodyDialogEditComponent,
   ],
   imports: [
     BrowserModule,
