@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Editar temple from {{temple?.location}}!</h2>
+
+
+
+<form [formGroup]="templesForm" novalidate (ngSubmit)="close(true)">
+  <mat-dialog-content>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Location" formControlName="location">
+            <mat-error *ngIf="templesForm.controls['location'].hasError('required')">
+              Location <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="templesForm.controls['location'].hasError('minlength')">
+              The minimum size is <strong>3</strong>
+            </mat-error>
+            <mat-error *ngIf="templesForm.controls['location'].hasError('maxlength')">
+              The maximum size is <strong>14</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Builders" formControlName="builders">
+            <mat-error *ngIf="templesForm.controls['builders'].hasError('required')">
+              Builders <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="templesForm.controls['builders'].hasError('minlength')">
+              The minimum size is <strong>3</strong>
+            </mat-error>
+            <mat-error *ngIf="templesForm.controls['builders'].hasError('maxlength')">
+              The maximum size is <strong>14</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+      <button class="mat-button" type="button" (click)="close(false)">Cancel</button>
+      <button class="mat-button" type="submit" style="text-align: end;" [disabled]="!templesForm.valid">Submit</button>
+  </mat-dialog-actions>
+</form>

@@ -7,15 +7,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
-import { TempleFormComponent } from './temple-form.component';
+import { TemplesFormComponent } from './temples-form.component';
 
-describe('TempleFormComponent', () => {
-  let component: TempleFormComponent;
-  let fixture: ComponentFixture<TempleFormComponent>;
+describe('TemplesFormComponent', () => {
+  let component: TemplesFormComponent;
+  let fixture: ComponentFixture<TemplesFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TempleFormComponent ],
+      declarations: [ TemplesFormComponent ],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -29,7 +29,7 @@ describe('TempleFormComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TempleFormComponent);
+    fixture = TestBed.createComponent(TemplesFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
