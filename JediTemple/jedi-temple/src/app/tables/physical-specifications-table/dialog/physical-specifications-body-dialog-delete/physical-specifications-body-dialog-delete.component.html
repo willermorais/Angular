@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Delete the event from {{specification?.description}}?</h2>
+
+<mat-dialog-content>
+    <p>This action is irreversible!</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-button" (click)="close(false)">No Tanks</button>
+    <button class="mat-button" (click)="close(true)" style="text-align: end;">Yes</button>
+</mat-dialog-actions>

@@ -54,7 +54,7 @@ export class EventsTableComponent implements AfterViewInit, OnInit {
       if(value == false){
         alert(`Dialog sent: ${value}`); 
       }else{
-        alert(`Dialog sent ${value.location}`); 
+        alert(`Dialog sent ${value.description}`); 
       }
     });
   }

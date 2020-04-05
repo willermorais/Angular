@@ -2,6 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import { Event } from './../../../../models/Event';
 
 @Component({
   selector: 'app-event-body-dialog-edit',
