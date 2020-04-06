@@ -21,6 +21,8 @@ export class PhysicalSpecificationsBodyDialogEditComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.specificationsForm.controls['description'].setValue(this.specification.description);
+    this.specificationsForm.controls['specification'].setValue(this.specification.specification);
   }
   
   close(isEdit: boolean) {

@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import { EventsTableDataSource } from './events-table-datasource';
 import { Event } from './../../models/Event';
 
 import { EventBodyDialogDeleteComponent } from './dialog/event-body-dialog-delete/event-body-dialog-delete.component';
@@ -44,6 +43,7 @@ export class EventsTableComponent implements OnInit {
     dialogConfig.data = row;
     let dialogRef = this.matDialog.open(EventBodyDialogDeleteComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(value => {
+      
       if (value) {
         this.deleteEventById(row.id);
       }
