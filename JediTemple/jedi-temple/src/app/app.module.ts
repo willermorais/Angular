@@ -19,6 +19,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 import { TemplesFormComponent } from './forms/temples-form/temples-form.component';
 import { EventsFormComponent } from './forms/events-form/events-form.component';
 import { PhysicalSpecificationsFormComponent } from './forms/physical-specifications-form/physical-specifications-form.component';
@@ -34,6 +36,8 @@ import { PhysicalSpecificationsBodyDialogEditComponent } from './tables/physical
 import { PhysicalSpecificationsBodyDialogDeleteComponent } from './tables/physical-specifications-table/dialog/physical-specifications-body-dialog-delete/physical-specifications-body-dialog-delete.component';
 import { SpecificationsComponent } from './specifications/specifications.component';
 import { HandleErrorService } from './services/handleError.service';
+import { DashboardTempleComponent } from './dashboard/dashboard-temple/dashboard-temple.component';
+import { DashboardSpecificationsComponent } from './dashboard/dashboard-specifications/dashboard-specifications.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,8 @@ import { HandleErrorService } from './services/handleError.service';
     PhysicalSpecificationsBodyDialogEditComponent,
     PhysicalSpecificationsBodyDialogDeleteComponent,
     SpecificationsComponent,
+    DashboardTempleComponent,
+    DashboardSpecificationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +73,8 @@ import { HandleErrorService } from './services/handleError.service';
     MatSortModule,
     MatIconModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [ TempleService, HandleErrorService ],
   bootstrap: [AppComponent]

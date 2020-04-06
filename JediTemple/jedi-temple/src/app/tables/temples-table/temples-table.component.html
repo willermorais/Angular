@@ -22,7 +22,7 @@
         <button class="mat-flat-button" style="line-height: 0;" (click)="openDialogEdit(row)">
           <mat-icon color="primary">edit</mat-icon>
         </button>
-        <button class="mat-flat-button" style="line-height: 0;" (click)="getRecord('Select')">
+        <button class="mat-flat-button" style="line-height: 0;" [routerLink]="['/specifications/', row.id]" routerLinkActive="router-link-active" >
           <mat-icon color="primary">done_outline</mat-icon>
         </button>
     </ng-container>
