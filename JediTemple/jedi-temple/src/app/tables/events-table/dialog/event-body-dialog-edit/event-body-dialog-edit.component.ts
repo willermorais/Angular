@@ -35,6 +35,9 @@ export class EventBodyDialogEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.eventsForm.controls['description'].setValue(this.event.description);
+    this.eventsForm.controls['date'].setValue(this.event.date);
+    this.eventsForm.controls['time_measure'].setValue(this.event.time_measure);
   }
 
   close(isEdit: boolean) {

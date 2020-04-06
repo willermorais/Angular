@@ -3,49 +3,41 @@ import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Temple } from './../models/Temple';
+import { Event } from './../models/Event';
 import { MEAT_API } from './../app.api';
 
 @Injectable({providedIn: 'root'})
-export class TempleService {
+export class EventsService {
 
-  templesUrl: string = `${MEAT_API}/jedi_temple`;
+  templesUrl: string = `${MEAT_API}/event`;
 
   constructor(private http: HttpClient, private handleError: HandleErrorService) { }
 
-  getTemples() {
-    const url = `${this.templesUrl}`
-    return this.http.get<Temple[]>(url)
-      .pipe(
-        catchError(this.handleError.handleError)
-      );
-  }
-
-  getTempleById(id: number) {
+  getEventsByTempleId(id: number) {
     const url = `${this.templesUrl}/${id}`
-    return this.http.get<Temple>(url)
+    return this.http.get<Event[]>(url)
       .pipe(
         catchError(this.handleError.handleError)
       )
   }
 
-  postTemple(temple: Temple) {
-    const url = `${this.templesUrl}`
-    return this.http.post<Temple>(url, temple)
+  postEventByTempleId(event: Event, id: number) {
+    const url = `${this.templesUrl}/${id}`
+    return this.http.post<Event>(url, event)
+      .pipe(
+        catchError(this.handleError.handleError)
+      )
+  }
+
+  putEvent(event: Event) {
+    const url = `${this.templesUrl}`;
+    return this.http.put<Event>(url, event)
       .pipe(
         catchError(this.handleError.handleError)
       );
   }
 
-  putTempleById(id: number, temple: Temple) {
-    const url = `${this.templesUrl}/${id}`;
-    return this.http.put<Temple>(url, temple)
-      .pipe(
-        catchError(this.handleError.handleError)
-      );
-  }
-
-  deleteTempleById(id: number) {
+  deleteEventById(id: number) {
     const url = `${this.templesUrl}/${id}`;
     return this.http.delete(url)
       .pipe(
@@ -53,13 +45,12 @@ export class TempleService {
       );
   }
 
-  deleteAllTemples() {
-    const url = `${this.templesUrl}/all`;
+  deleteAllEventsByTempleId(id: number) {
+    const url = `${this.templesUrl}/${id}/all`;
     return this.http.delete(url)
       .pipe(
         catchError(this.handleError.handleError)
       );
   }
+
 }
-
-

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HandleErrorService {
 
   handleError(error: HttpErrorResponse) {
@@ -15,6 +15,7 @@ export class HandleErrorService {
           break;
 
         default:
+          alert('Error!');
           break;
       }
     }

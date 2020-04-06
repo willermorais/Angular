@@ -88,7 +88,7 @@ import { MatListModule } from '@angular/material/list';
     MatListModule,
     MatTabsModule
   ],
-  providers: [ TempleService, HandleErrorService ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,10 +3,23 @@ import { Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AppService {
-  observer = new Subject();
-  public reloadTableTample$ = this.observer.asObservable();
+  observerTemple = new Subject();
+  observerEvent = new Subject();
+  observerPhysicalSpecifications = new Subject();
+  
+  public reloadTableTample$ = this.observerTemple.asObservable();
+  public reloadTableEvent$ = this.observerEvent.asObservable();
+  public reloadTablePhysicalSpecifications$ = this.observerPhysicalSpecifications.asObservable();
 
   reloadTableTampleEmit() {
-    this.observer.next();
+    this.observerTemple.next();
+  }
+
+  reloadTableEventsEmit() {
+    this.observerEvent.next();
+  }
+
+  reloadTablePhysicalSpecificationsEmit() {
+    this.observerPhysicalSpecifications.next();
   }
 }

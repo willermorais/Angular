@@ -36,33 +36,6 @@ export class TemplesTableComponent implements OnInit {
 
   constructor(private matDialog: MatDialog, private templeService: TempleService, private appService: AppService) { }
 
-  private getTemples() {
-    this.templeService.getTemples()
-      .subscribe((temples: Temple[]) => {
-        this.temples = temples;
-        this.dataSource.data = this.temples;
-      });
-  }
-
-  private deleteTempleById(id: number) {
-    this.templeService.deleteTempleById(id)
-      .subscribe(() => {
-        this.getTemples();
-      });
-  }
-
-  private putTempleById(id: number, temple: Temple) {
-    this.templeService.putTempleById(id, temple)
-      .subscribe(() => {
-        this.getTemples();
-      });
-
-  }
-
-  getRecord(row: string) {
-    alert("teste: " + row);
-  }
-
   openDialogDelete(row: Temple) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = row;
@@ -84,5 +57,27 @@ export class TemplesTableComponent implements OnInit {
         this.putTempleById(row.id, value);
       }
     });
+  }
+
+  private getTemples() {
+    this.templeService.getTemples()
+      .subscribe((temples: Temple[]) => {
+        this.temples = temples;
+        this.dataSource.data = this.temples;
+      });
+  }
+
+  private deleteTempleById(id: number) {
+    this.templeService.deleteTempleById(id)
+      .subscribe(() => {
+        this.getTemples();
+      });
+  }
+
+  private putTempleById(id: number, temple: Temple) {
+    this.templeService.putTempleById(id, temple)
+      .subscribe(() => {
+        this.getTemples();
+      });
   }
 }
