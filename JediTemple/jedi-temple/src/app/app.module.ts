@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
@@ -38,6 +39,11 @@ import { SpecificationsComponent } from './specifications/specifications.compone
 import { HandleErrorService } from './services/handleError.service';
 import { DashboardTempleComponent } from './dashboard/dashboard-temple/dashboard-temple.component';
 import { DashboardSpecificationsComponent } from './dashboard/dashboard-specifications/dashboard-specifications.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -57,6 +63,7 @@ import { DashboardSpecificationsComponent } from './dashboard/dashboard-specific
     SpecificationsComponent,
     DashboardTempleComponent,
     DashboardSpecificationsComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +81,12 @@ import { DashboardSpecificationsComponent } from './dashboard/dashboard-specific
     MatIconModule,
     MatDialogModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTabsModule
   ],
   providers: [ TempleService, HandleErrorService ],
   bootstrap: [AppComponent]
