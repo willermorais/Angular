@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AppService } from './../../services/app.service';
+import { TempleService } from './../../services/temple.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 
-import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import {TemplesTableDataSource} from './temples-table-datasource';
 import { Temple } from '../../models/Temple';
 
 import { TempleBodyDialogDeleteComponent } from './dialog/temple-body-dialog-delete/temple-body-dialog-delete.component';
@@ -16,28 +16,50 @@ import { TempleBodyDialogEditComponent } from './dialog/temple-body-dialog-edit/
   templateUrl: './temples-table.component.html',
   styleUrls: ['./temples-table.component.css']
 })
-export class TemplesTableComponent implements AfterViewInit, OnInit {
+export class TemplesTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<Temple>;
-  dataSource: TemplesTableDataSource;
-  
+
+  temples: Temple[] = [];
+
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['location', 'builders', 'buttons'];
+  dataSource = new MatTableDataSource<Temple>(this.temples);
 
   ngOnInit() {
-    this.dataSource = new TemplesTableDataSource();
-  }
-
-  constructor(private matDialog: MatDialog){}
-  
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    this.getTemples();
+
+    this.appService.reloadTableTample$.subscribe(() => {
+      this.getTemples();
+    });
   }
 
-  getRecord(row: string){
+  constructor(private matDialog: MatDialog, private templeService: TempleService, private appService: AppService) { }
+
+  private getTemples() {
+    this.templeService.getTemples()
+      .subscribe((temples: Temple[]) => {
+        this.temples = temples;
+        this.dataSource.data = this.temples;
+      });
+  }
+
+  private deleteTempleById(id: number) {
+    this.templeService.deleteTempleById(id)
+      .subscribe(() => {
+        this.getTemples();
+      });
+  }
+
+  private putTempleById(id: number, temple: Temple) {
+    this.templeService.putTempleById(id, temple)
+      .subscribe(() => {
+        this.getTemples();
+      });
+
+  }
+
+  getRecord(row: string) {
     alert("teste: " + row);
   }
 
@@ -46,20 +68,20 @@ export class TemplesTableComponent implements AfterViewInit, OnInit {
     dialogConfig.data = row;
     let dialogRef = this.matDialog.open(TempleBodyDialogDeleteComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(value => {
-      alert(`Dialog sent: ${value}`); 
+      if (value) {
+        this.deleteTempleById(row.id);
+      }
     });
   }
-  
+
   openDialogEdit(row: Temple) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = row;
     let dialogRef = this.matDialog.open(TempleBodyDialogEditComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(value => {
-      
-      if(value == false){
-        alert(`Dialog sent: ${value}`); 
-      }else{
-        alert(`Dialog sent ${value.location}`); 
+
+      if ((!(value == false) && !(value === undefined))) {
+        this.putTempleById(row.id, value);
       }
     });
   }

@@ -1,4 +1,5 @@
 export interface PhysicalSpecification {
-    description: string,
-    specification: number
+  id?: number,
+  description: string,
+  specification: number
 }

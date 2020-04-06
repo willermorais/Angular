@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-  <table mat-table class="full-width-table" #table matSort aria-label="Elements">
+  <table mat-table  [dataSource]="dataSource" class="full-width-table" #table matSort aria-label="Elements">
     <!-- location Column -->
     <ng-container matColumnDef="location">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>

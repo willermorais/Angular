@@ -21,6 +21,8 @@ export class TempleBodyDialogEditComponent implements OnInit {
               public dialogRef: MatDialogRef<TempleBodyDialogEditComponent>) { }
 
   ngOnInit(): void {
+    this.templesForm.controls['location'].setValue(this.temple.location);
+    this.templesForm.controls['builders'].setValue(this.temple.builders);
   }
 
   close(isEdit: boolean) {

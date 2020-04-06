@@ -1,6 +1,8 @@
+import { TempleService } from './services/temple.service';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +32,8 @@ import { EventBodyDialogDeleteComponent } from './tables/events-table/dialog/eve
 import { EventBodyDialogEditComponent } from './tables/events-table/dialog/event-body-dialog-edit/event-body-dialog-edit.component';
 import { PhysicalSpecificationsBodyDialogEditComponent } from './tables/physical-specifications-table/dialog/physical-specifications-body-dialog-edit/physical-specifications-body-dialog-edit.component';
 import { PhysicalSpecificationsBodyDialogDeleteComponent } from './tables/physical-specifications-table/dialog/physical-specifications-body-dialog-delete/physical-specifications-body-dialog-delete.component';
+import { SpecificationsComponent } from './specifications/specifications.component';
+import { HandleErrorService } from './services/handleError.service';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,7 @@ import { PhysicalSpecificationsBodyDialogDeleteComponent } from './tables/physic
     EventBodyDialogEditComponent,
     PhysicalSpecificationsBodyDialogEditComponent,
     PhysicalSpecificationsBodyDialogDeleteComponent,
+    SpecificationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,9 +66,10 @@ import { PhysicalSpecificationsBodyDialogDeleteComponent } from './tables/physic
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ TempleService, HandleErrorService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
